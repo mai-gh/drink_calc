@@ -40,9 +40,8 @@ elif a["final_abv"] and a["mixer_vol"] and not a["liquor_vol"]:
 
 # recipe based on liquor vol to determine container vol of desired final abv
 elif a["liquor_vol"] and a["liquor_abv"] and not a["container_vol"]:
-  a["delution_ratio"] = a["liquor_abv"] / a["final_abv"]
-  a["container_vol"] = a["delution_ratio"] * a["liquor_vol"]
-  a["mixer_vol"] = a["container_vol"] - a["liquor_vol"]
+  a["container_vol"] = a["mixer_vol"] + a["liquor_vol"]
+  a["final_abv"] = a["liquor_abv"] * (a["liquor_vol"] / a["mixer_vol"])
 
 
 else:
